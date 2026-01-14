@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frame Spirit - Услуги по компьютерам</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header с логотипом и названием -->
+        <header class="header">
+            <div class="logo-container">
+                <img src="image/FrameSpiritLOGO.png" alt="Frame Spirit Logo" class="logo" id="logo">
+                <h1 class="company-name">Frame Spirit</h1>
+            </div>
+            <div class="user-profile" id="userProfile">
+                <span class="user-name" id="userName">Пользователь</span>
+                <div class="avatar" id="userAvatar">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <!-- Экран услуг -->
+            <section class="services-screen" id="servicesScreen">
+                <div class="services-grid">
+                    <!-- Квадрат 1: Сборка ПК -->
+                    <div class="service-card" data-service="1">
+                        <div class="service-icon-placeholder">
+                            <!-- ЛОГОТИП ДЛЯ ЗАМЕНЫ: service1-icon -->
+                            <div class="icon-placeholder" id="service1-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                        </div>
+                        <h3 class="service-title">Сборка ПК</h3>
+                        <p class="service-description">Профессиональная сборка компьютеров под ваши задачи с гарантией качества</p>
+                    </div>
+
+                    <!-- Квадрат 2: Чистка и обслуживание -->
+                    <div class="service-card" data-service="2">
+                        <div class="service-icon-placeholder">
+                            <!-- ЛОГОТИП ДЛЯ ЗАМЕНЫ: service2-icon -->
+                            <div class="icon-placeholder" id="service2-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                        </div>
+                        <h3 class="service-title">Чистка и обслуживание</h3>
+                        <p class="service-description">Комплексная чистка и техническое обслуживание вашего компьютера</p>
+                    </div>
+
+                    <!-- Квадрат 3: Апгрейд ПК -->
+                    <div class="service-card" data-service="3">
+                        <div class="service-icon-placeholder">
+                            <!-- ЛОГОТИП ДЛЯ ЗАМЕНЫ: service3-icon -->
+                            <div class="icon-placeholder" id="service3-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                        </div>
+                        <h3 class="service-title">Апгрейд ПК</h3>
+                        <p class="service-description">Модернизация комплектующих для повышения производительности</p>
+                    </div>
+
+                    <!-- Квадрат 4: Установка Windows -->
+                    <div class="service-card" data-service="4">
+                        <div class="service-icon-placeholder">
+                            <!-- ЛОГОТИП ДЛЯ ЗАМЕНЫ: service4-icon -->
+                            <div class="icon-placeholder" id="service4-icon">
+                                <i class="fab fa-windows"></i>
+                            </div>
+                        </div>
+                        <h3 class="service-title">Установка Windows</h3>
+                        <p class="service-description">Установка и настройка операционной системы Windows</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Экран формы заказа -->
+            <section class="order-screen" id="orderScreen" style="display: none;">
+                <div class="screen-header">
+                    <button class="back-button" id="backButton">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <h2 id="orderScreenTitle">Оформление заказа</h2>
+                </div>
+
+                <form class="order-form" id="orderForm">
+                    <div class="selected-service-display" id="selectedServiceDisplay">
+                        <span id="selectedServiceText">Сборка ПК</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fullName">Имя и фамилия</label>
+                        <input type="text" id="fullName" required placeholder="Иван Иванов">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" required placeholder="+375 (XX) XXX-XX-XX">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Адрес для выезда</label>
+                        <input type="text" id="address" required placeholder="г. Минск, ул. Примерная, д. 1">
+                    </div>
+
+                    <!-- Динамические поля для разных услуг -->
+                    <div class="form-group" id="dynamicFields">
+                        <!-- Поля будут добавляться динамически -->
+                    </div>
+
+                    <!-- Выбор даты и времени -->
+                    <div class="form-group">
+                        <label>Удобное время и дата</label>
+                        <div class="time-slots">
+                            <div class="time-slot" data-time="9:00-12:00">9:00-12:00</div>
+                            <div class="time-slot" data-time="12:00-15:00">12:00-15:00</div>
+                            <div class="time-slot" data-time="15:00-18:00">15:00-18:00</div>
+                            <div class="time-slot" data-time="18:00-21:00">18:00-21:00</div>
+                        </div>
+                        <input type="date" id="appointmentDate" class="date-input" required>
+                    </div>
+
+                    <!-- Опции для Windows -->
+                    <div class="windows-options" id="windowsOptions" style="display: none;">
+                        <label>Выберите систему</label>
+                        <div class="windows-buttons">
+                            <button type="button" class="windows-btn" data-version="10">Windows 10</button>
+                            <button type="button" class="windows-btn" data-version="11">Windows 11</button>
+                        </div>
+                        <div class="checkbox-option" style="margin-top: 15px;">
+                            <input type="checkbox" id="installDrivers" name="installDrivers">
+                            <label for="installDrivers">С установкой драйверов (+20 BYN)</label>
+                        </div>
+                    </div>
+
+                    <!-- Цены и сроки -->
+                    <div class="pricing-info" id="pricingInfo">
+                        <!-- Информация о ценах будет добавляться динамически -->
+                    </div>
+
+                    <!-- Кнопки действий -->
+                    <div class="action-buttons">
+                        <button type="button" class="btn-secondary" id="backToServicesBtn">
+                            <i class="fas fa-arrow-left"></i> Назад к услугам
+                        </button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-check"></i> Оформить услугу
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Экран успешного оформления -->
+            <section class="success-screen" id="successScreen" style="display: none;">
+                <div class="success-animation">
+                    <div class="checkmark-container">
+                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+                            <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                        </svg>
+                    </div>
+                    <h2 class="success-title">Заявка оформлена!</h2>
+                    <p class="success-message">Мы свяжемся с вами в течение 30 минут для подтверждения заказа</p>
+                    <div class="order-details" id="orderDetails">
+                        <!-- Детали заказа будут добавлены динамически -->
+                    </div>
+                </div>
+                <button class="back-home-btn" id="backHomeBtn">
+                    Вернуться на главную
+                </button>
+            </section>
+        </main>
+    </div>
+
+    <!-- Модальное окно для выбора опций -->
+    <div class="modal-overlay" id="optionsModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Выберите опции</h3>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body" id="modalOptions">
+                <!-- Опции будут добавляться динамически -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" id="saveOptions">Сохранить выбор</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
